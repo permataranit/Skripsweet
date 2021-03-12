@@ -1,0 +1,118 @@
+﻿{% extends "base.html" %}
+{% block content %}
+
+         <div id="page-wrapper" >
+            <div id="page-inner">
+
+                 <div class="row">
+                    <div class="col-md-12">
+                        <h2>Database</h2>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Form Elements -->
+                        <form role="form" action="/form_upload" method="post" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <div class="col-sm-4">
+                                    <input type="file" name="file" class="form-control" accept=".csv" title="file berekstensi csv dengan delimeter ',' " required>
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="submit" class="btn btn-outline btn-danger" name="submit" value="Proses"/>
+                                </div>
+                            </div>
+                        </form>
+                        <!--End Form Element -->
+                    </div><!-- /. col md 12  -->
+                </div>
+                <!-- /. ROW  -->
+
+                <!-- <a href="/form_upload" class="btn btn-outline btn-danger" style="float: left"><i class="fa fa-plus-circle fa-fw"></i> Tambah Dataset</a> -->
+
+                <br/><br/><!-- <br/> -->
+
+                <!-- INI MESSAGE AJA -->
+                <!-- {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %} -->
+                <!-- INI MESSAGE AJA -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <script type='text/javascript'>
+                        var messages = {{ messages | safe }};
+                        for (var i=0; i<messages.length; i++)
+                        {
+                            alert(messages[i]);
+                        }
+                    </script>
+                    {% endif %}
+                {% endwith %}
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Daftar Dataset</div>
+                        <div class="panel-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    
+                                    <thead>
+                                        <tr>
+                                            <th><center>No</center></th>
+                                            <th><center>Nama</center></th>
+                                            <th><center>Kolom Target</center></th>
+                                            <th><center>Kelas 1</center></th>
+                                            <th><center>Kelas 2</center></th>
+                                            <th width="10%"><center>Aksi</center></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        {% for keping in daftar: %}
+                                        <tr>
+                                            <td><center>{{ loop.index }}</center></td>
+                                            <td><center>{{ keping[1] }}</center></td>
+                                            <td><center>{{ keping[2] }}</center></td>
+                                            <td><center>{{ keping[3] }}</center></td>
+                                            <td><center>{{ keping[4] }}</center></td>
+                                            <td>
+                                                <center>
+                                                    <a href="/lihat_data/{{ keping[0] }}" class="btn btn-warning btn-xs" title="Lihat Dataset"><i class="fa fa-search"></i></a>
+
+                                                    |
+
+                                                    <a href="/hapus_data/{{ keping[0] }}" onclick="return confirm('Yakin ingin hapus dataset ini?')" class="btn btn-danger btn-xs" title="Hapus Dataset"><i class="fa fa-trash-o"></i></a>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}    
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div><!-- /. panel body  -->
+                    </div>
+                    <!--End Advanced Tables -->
+                    </div><!-- /. col md 12  -->
+                </div>
+                <!-- /. ROW  -->
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}

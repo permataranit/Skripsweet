@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+         <div id="page-wrapper" >
+            <div id="page-inner">
+
+                 <div class="row">
+                    <div class="col-md-12">
+                        <h2>Support Vector Machine</h2>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="row"> 
+                    <div class="col-md-12">
+
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Hasil Pengolahan SVM</div>
+                        <div class="panel-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                    
+                                    <thead>
+                                        <tr>
+                                            <th><center>Fold ke</center></th>
+                                            <th><center>Akurasi</center></th>
+                                            <th><center>Sensitifitas</center></th>
+                                            <th><center>Spesifisitas</center></th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        {% for keping in range(listakur|length): %}
+                                        <tr>
+                                            <td><center>{{ loop.index }}</center></td>
+                                            <td><center>{{ listakur[keping] }} %</center></td>
+                                            <td><center>{{ listsensi[keping] }} %</center></td>
+                                            <td><center>{{ listspesi[keping] }} %</center></td>
+                                        </tr>
+                                        {% endfor %}
+                                        <tr>
+                                            <td><center><b>Rata-rata</b></center></td>
+                                            <td><center><b>{{ akur }} %</b></center></td>
+                                            <td><center><b>{{ sensi }} %</b></center></td>
+                                            <td><center><b>{{ spesi }} %</b></center></td>
+                                        </tr>  
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <form role="form" action ="/proses2" method="post" enctype="multipart/form-data">
+
+                                <input type="hidden" name="datasid" value="{{id_data}}" />
+
+                                <input type="hidden" name="lrate" value="{{lrate}}" />
+
+                                <input type="hidden" name="lammada" value="{{lambdas}}" />
+
+                                <input type="hidden" name="ce" value="{{ce}}" />
+
+                                <input type="hidden" name="kf" value="{{kfol}}" />
+
+                                <input type="hidden" name="epsi" value="{{epsi}}" />
+
+                                <input type="hidden" name="epoh" value="{{maepoh}}" />
+
+                                <input type="hidden" name="akur" value="{{akur}}" />
+
+                                <input type="hidden" name="sensi" value="{{sensi}}" />
+
+                                <input type="hidden" name="spesi" value="{{spesi}}" />
+
+                                <br>
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                         <a href = "/proses1" class="btn btn-danger"><i class="fa fa-arrow-circle-left fa-fw"></i> Kembali </a>
+                                        <input type="submit" class="btn btn-outline btn-primary pull-right" name="submit" value="Proses SVM-RFE"/>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div><!-- /. panel body  -->
+                    </div>
+                    <!--End Advanced Tables -->
+                    </div><!-- /. col md 6  -->
+                </div>
+                <!-- /. ROW  -->
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}

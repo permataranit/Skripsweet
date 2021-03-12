@@ -1,0 +1,14 @@
+Ratih Permatasari
+24010314140129
+
+Catatan :
+1. Pastikan komputer yang akan digunakan sudah terinstal XAMPP, Python, Framework Flask, Library : mysql.connector, pandas, numpy, os, pickle
+   (apabila terdapat error 'modul not found', silahkan install terlebih dahulu modul yang dimaksud dengan cara 'pip install -nama modul yang ingin diinstall-')
+2. Install terlebih dahulu database 'rfesvm.sql' pada XAMPP Anda 
+
+Panduan Penggunaan:
+1. Buka program XAMPP lalu nyalakan 'Appache' dan 'MySQL'
+2. Tekan "shift + klik kanan" pada folder SAF_LDA, kemudian plih command prompt
+3. Ketikkan "python apps.py" pada layar console yang muncul kemudian tekan 'Enter'
+4. Setelah server siap untuk dijalankan, buka browser di alamat localhost:5000
+5. Program siap untuk digunakan

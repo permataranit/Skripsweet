@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+         <div id="page-wrapper" >
+            <div id="page-inner">
+
+                 <div class="row">
+                    <div class="col-md-12">
+                        <h2>Evaluasi Seleksi Fitur</h2>
+                    </div>
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Hasil</div>
+                        <div class="panel-body">
+                             <ul class="nav nav-tabs">
+                                <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Seleksi Fitur</a>
+                                </li>
+                                <li class=""><a href="#eval" data-toggle="tab" aria-expanded="false">Evaluasi</a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="home"><br><br>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            
+                                            <thead>
+                                                <tr>
+                                                    <th width="25%"><center>Ranking ke</center></th>
+                                                    <th><center>Fitur</center></th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                {% for keping in rank: %}
+                                                <tr>
+                                                    <td><center>{{ loop.index }}</center></td>
+                                                    <td><center>{{ keping }}</center></td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <br>
+
+                                    <a href = "/riwayat_hsl" class="btn btn-danger"><i class="fa fa-arrow-circle-left fa-fw"></i> Kembali </a>
+
+                                    <a href="/download_hasil/{{idnya}}" onclick="return confirm('Download hasil dataset ini?')" class="btn btn-info pull-right"><i class="fa fa-download"></i> Download Dataset</a>
+
+                                </div>
+
+                                <div class="tab-pane fade" id="eval"><br><br>
+                                    {%if status == "belum" %}
+                                    <p>Belum dilakukan proses evaluasi terhadap hasil proses ini.<p>
+                                        <center>
+                                            <a href="/cek_evaluasi/{{idnya}}" class="btn btn-success btn-lg"><i class="fa fa-check-square-o"></i> Lakukan Evaluasi</a>
+                                        </center>
+                                    
+                                
+                                    {% else %}
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example1">
+                            
+                                            <thead>
+                                                <tr>
+                                                    <th><center>Subset</center></th>
+                                                    <th><center>Akurasi</center></th>
+                                                    <th><center>Sensitifitas</center></th>
+                                                    <th><center>Spesifisitas</center></th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                {% for keping in eval: %}
+                                                <tr>
+                                                    <td><center>{{ loop.index }}</center></td>
+                                                    <td><center>{{ keping[0] }} %</center></td>
+                                                    <td><center>{{ keping[1] }} %</center></td>
+                                                    <td><center>{{ keping[2] }} %</center></td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <br>
+
+                                    <center><a href = "/riwayat_hsl" class="btn btn-danger"><i class="fa fa-arrow-circle-left fa-fw"></i> Kembali </a></center>
+
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                            
+                            
+                        </div><!-- /. panel body  -->
+                    </div>
+                    <!--End Advanced Tables -->
+                    </div><!-- /. col md 12  -->
+
+                </div>
+                <!-- /. ROW  -->
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+
+{% endblock %}

@@ -1,0 +1,12 @@
+ini pake binary admin, yang bisa nihhh
+
+#librarynya udah pake yang baru
+-SVMtrainingnya pengembaliannya support vector dan alpha
+-SVMTestingnya masukannya pake support vector, alpha, dan lambda
+-SVMTesting pengembaliannya akurasi dan prediksi
+-ada fungsi laporan nilai (untuk hitung sensitifitas dan spesifisitas)
+
+#appsnya udah pake yang baru
+-di importnya lengkap dan terbaru
+-dibagian pemrosesan SVM maupun RFE udah dimodif untuk memproses fungsi laporan nilai
+-fungsi2nya udah lengkapp
