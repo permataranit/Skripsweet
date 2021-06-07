@@ -1,6 +1,3 @@
-Ratih Permatasari
-24010314140129
-
 Catatan :
 1. Pastikan komputer yang akan digunakan sudah terinstal XAMPP, Python, Framework Flask, Library : mysql.connector, pandas, numpy, os, pickle
    (apabila terdapat error 'modul not found', silahkan install terlebih dahulu modul yang dimaksud dengan cara 'pip install -nama modul yang ingin diinstall-')
